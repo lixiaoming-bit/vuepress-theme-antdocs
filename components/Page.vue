@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top" />
 
-    <Content class="theme-antdocs-content" />
+    <Content class="theme-antdocs-content" v-viewer />
     <PageEdit />
 
     <PageNav v-bind="{ sidebarItems }" />
@@ -15,6 +15,10 @@
 import PageEdit from '@theme/components/PageEdit.vue'
 import PageNav from '@theme/components/PageNav.vue'
 
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+import Vue from 'vue'
+Vue.use(Viewer)
 export default {
   components: { PageEdit, PageNav },
   props: ['sidebarItems']
@@ -27,6 +31,9 @@ export default {
 .page {
   padding-bottom: 2rem;
   display: block;
+  img {
+    cursor: zoom-in;
+  }
 }
 @media (max-width: @MQMobile) {
   .page {
